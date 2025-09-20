@@ -46,6 +46,6 @@ unsafe impl GlobalAlloc for BumpAllocator {
     }
 }
 
-#[cfg(target_os = "solana")]
+#[cfg(all(not(feature = "no-entrypoint"), target_os = "solana"))]
 #[global_allocator]
 static A: BumpAllocator = BumpAllocator;
